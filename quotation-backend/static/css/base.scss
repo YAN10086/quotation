@@ -1,0 +1,54 @@
+@charset 'utf-8';
+
+//初始化样式
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.el-main {
+  padding: 10px 20px !important;
+}
+div {
+  box-sizing: border-box;
+}
+.right-main {
+}
+.template-down {
+  color: #ffffff;
+  text-decoration: none;
+}
+.top-search {
+  padding: 15px 20px 0px 20px;
+  background: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.el-page {
+  display: flex;
+  justify-content: end;
+  background: #fff;
+  padding: 10px 15px;
+}
+.search-bt-block {
+  width: 100%;
+  text-align: center;
+}
+.main-table {
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 15px 20px;
+  background: #fff;
+}
