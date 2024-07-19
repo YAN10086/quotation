@@ -1,0 +1,87 @@
+<!--
+ * @Descripttion: 
+ * @Author: baiyf
+ * @Date: 2021-11-02 13:06:23
+ * @LastEditTime: 2023-06-04 19:18:06
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
+
+    <script>
+        var vConsole = new VConsole();
+        console.log('Hello world');
+    </script>
+    <title>邮箱验证</title>
+</head>
+
+<body>
+    <button onclick="send()">send</button>
+    <button onclick="pay()">拉起微信支付!</button>
+    <div id="url"></div>
+    <!-- <button onclick="notify()">通知回调@</button> -->
+</body>
+
+</html>
+
+
+<script>
+    function send() {
+        $.ajax({
+            // url: "http://pay.acewb.com/pay/sendEmailVerificationCode",
+            url: "http://192.168.1.3:3000/pay/sendEmailVerificationCode",
+            type: "POST",
+            data: {
+                email: '960519152@qq.com'
+            },
+            success: (res) => {
+                console.log("res", res)
+            },
+            error: (err) => {
+                console.log("err", err)
+            }
+        })
+    }
+
+    function pay() {
+        $.ajax({
+            url: "http://pay.acewb.com/pay/startPay",
+            // url: "http://192.168.3.151:5000/users/startPay",
+            type: "GET",
+            data: {},
+            success: (res) => {
+                console.log("res", res);
+                let jump_url = res.body.data.jump_url;
+                $("#url").append(jump_url);
+                window.location.href = jump_url;
+                // window.open(jump_url, 'self')
+            },
+            error: (err) => {
+                console.log("err", err)
+            }
+        })
+    }
+    // function notify() {
+    //     $.ajax({
+    //         // url: "http://pay.acewb.com/goods/sendSuccess",
+    //         url: "http://192.168.3.151:5000/pay/sendSuccess",
+    //         type: "POST",
+    //         data: {
+    //             out_trade_no: 'AA960519152'
+    //         },
+    //         success: (res) => {
+    //             console.log("res", res);
+    //         },
+    //         error: (err) => {
+    //             console.log("err", err)
+    //         }
+    //     })
+    // }
+</script>
